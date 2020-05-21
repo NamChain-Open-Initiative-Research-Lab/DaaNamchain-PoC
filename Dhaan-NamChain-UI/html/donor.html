@@ -1,0 +1,145 @@
+	<!-- 
+	Author       : Sandhiya S
+	Date Updated : 21.05.2020
+	-->
+  <!DOCTYPE html>
+  <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dhaan-NamChain Donor Dashboard</title>
+        <link href='https://fonts.googleapis.com/css?family=Nunito:600,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../css/Dstyle.css">
+    </head>
+    <body>
+	
+		<!-- 
+    Author       : Ramaguru Radhakrishnan
+    Date Updated : 01.05.2020
+    -->
+    <script src=" https://cdn.jsdelivr.net/npm/web3@1.2.7/dist/web3.js"></script>
+    <script src= "../js/abi.js"></script>
+    <script>
+        window.onload = function () 
+        {
+            // check to see if user has metamask addon installed on his browser. check to make sure web3 is defined
+            if (typeof web3 ==='undefined') 
+            {
+                web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/cbd9dc11b30147e9a2cc974be655ef7c"));
+            }
+        }  
+    </script>
+	
+	<script>
+         web3 = new Web3(new Web3.providers.WebsocketProvider("wss://ropsten.infura.io/ws/v3/cbd9dc11b30147e9a2cc974be655ef7c"));
+         console.log("checking");
+         var subscription = web3.eth.subscribe('logs', {
+             address: '0x2Aad0cB9eB6C39508599E5aD866C18a2d90187Ff',
+             topics: ['0xa1cac0c02aaa8455b22f4edad5ea6218aeec41fd73afcf8668f7586accd1f901']
+             }, function(error, result){
+             console.log("inside if");   
+             if (!error)
+             {
+                console.log(hexToString (result.data));
+             }
+             else
+             {
+                console.log(error);
+             }
+         });
+        function hexToString (hex) 
+        {
+            var string = '';
+            for (var i = 128; i < hex.length; i += 2) 
+            {
+                string += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+            }
+            return string.substring(1);
+        }
+        
+                //function to retrieve the last inserted value on the blockchain
+        function donor_reg()
+        {
+            console.log("Registration of Donor");
+
+            try 
+            {
+                
+                //instantiate and connect to contract address via Abi
+                var myfunction = new web3.eth.Contract(donorABI, donorSCAddr, {from: '0xc6Fea06FdBe2c780Db5bcc155b789D5463f50D62', gasPrice: '5000000' });
+                
+
+                
+                //call the get function of our SimpleStorage contract
+                myfunction.methods.registerDnr().call().then(console.log);
+            }
+            catch(err)
+                {
+                    
+                }
+        }
+    </script> 
+
+      <form action="index.html" method="post">
+      
+        <h1>Donor Registration</h1>
+        
+        <fieldset>
+          <legend><span class="number">1</span>Basic info</legend>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="user_name">
+          
+          <label for="mail">Email:</label>
+          <input type="email" id="mail" name="user_email">
+          
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="user_password">
+          
+          <label>Age:</label>
+         <input type="number" id="age" name="user_age">
+          
+          <label>Gender:</label>
+          <input type="radio" id="male" value="male" name="user_gender"><label for="male" class="light">Male</label><br>
+          <input type="radio" id="female" value="female" name="user_gender"><label for="female" class="light">Female</label><br><input type="radio" id="others" value="others" name="user_gender"><label for="others" class="light">Others</label>
+        </fieldset>
+        
+   <fieldset>
+          <legend><span class="number">2</span>Health info</legend>
+
+        <label for="job">Blood Group</label>
+        <select id="bg" name="user_bg">
+         <option value="O_pve">O+</option>
+            <option value="O_nve">O-</option>
+          <option value="A_pve">A+</option>
+          <option value="A_nve">A-</option>
+          <option value="B_pve">B+</option>
+          <option value="B_nve">B-</option>
+          <option value="AB_pve">AB+</option>
+          <option value="AB_nve">AB-</option>
+        </select>
+        
+          <label>Organ(s) can be donated</label>
+          <input type="checkbox" id="ALL" value="ALL" name="user_org"><label class="light" for="ALL">ALL</label><br><br>
+          <input type="checkbox" id="Liver" value="Liver" name="user_org"><label class="light" for="design">Liver</label><br>
+          <input type="checkbox" id="Kidney" value="Kidney" name="user_org"><label class="light" for="Kidney">Kidney</label><br>
+          <input type="checkbox" id="Heart" value="Heart" name="user_org"><label class="light" for="Heart">Heart</label><br>
+          <input type="checkbox" id="Intestine" value="Intestine" name="user_org"><label class="light" for="Intestine">Intestine</label><br>
+          <input type="checkbox" id="Pancreas" value="Pancreas" name="user_org"><label class="light" for="Pancreas">Pancreas</label><br>
+          <input type="checkbox" id="Lung" value="Lung" name="user_org"><label class="light" for="Lung">Lung</label><br>
+          <input type="checkbox" id="Tissue" value="Tissue" name="user_org"><label class="light" for="Tissue">Tissue</label>
+       </fieldset>    
+<fieldset>
+          <legend><span class="number">3</span>Contact info</legend>
+   <label>Mobile:</label>
+          <input type="text">
+          <label for="name">Address:</label>
+          <textarea id="address" name="user_addr"></textarea>
+		  <label for="name">State:</label>
+          <input type="text">
+		  <label for="name">Country:</label>
+          <input type="text">
+      </fieldset>
+        <button type="button" onclick="donor_reg()">Register</button>
+      </form>
+      
+    </body>
+</html>

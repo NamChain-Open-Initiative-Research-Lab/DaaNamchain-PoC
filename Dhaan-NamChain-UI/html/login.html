@@ -1,0 +1,51 @@
+
+<!-- 
+Author       : Sandhiya S
+Date Updated : 21.05.2020
+-->
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Dhaan-NamChain </title>
+<link href='https://fonts.googleapis.com/css?family=Nunito:600,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../css/logstyle.css">
+</head>
+
+<body>
+
+	<!-- 
+    Author       : Ramaguru Radhakrishnan
+    Date Updated : 01.05.2020
+    -->
+    <script src=" https://cdn.jsdelivr.net/npm/web3@1.2.7/dist/web3.js"></script>
+    <script src= "../js/abi.js"></script>
+    <script>
+        window.onload = function () 
+        {
+            // check to see if user has metamask addon installed on his browser. check to make sure web3 is defined
+            if (typeof web3 ==='undefined') 
+            {
+                web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/cbd9dc11b30147e9a2cc974be655ef7c"));
+            }
+        }  
+    </script>
+
+
+  <div class="container">
+    <h1>Welcome Back!</h1>
+  <fieldset>
+    <label for="name">Email:<br></label><br>
+    <input type="email" >
+
+    <label for="name">Password:<br></label><br>
+    <input type="password" />
+
+ 
+    <button class="login">Login</button><br>
+	<button class="signup" onclick="window.location.href='index.html';" >Don't have an account? Sign Up</button>
+    <br><br><a href="#">Forgot Password</a>
+    </fieldset>  
+  </div>
+</body>
+</html>
