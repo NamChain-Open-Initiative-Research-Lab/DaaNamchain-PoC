@@ -120,7 +120,7 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]
+] 
 		
 
 //Doctor ABI and Address
