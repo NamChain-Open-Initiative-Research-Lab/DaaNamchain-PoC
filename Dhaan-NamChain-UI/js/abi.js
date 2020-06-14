@@ -9,7 +9,7 @@
 		"inputs": [],
 		"name": "getAllDonors",
 		"outputs": [
-			{
+			{ 
 				"internalType": "address[]",
 				"name": "",
 				"type": "address[]"
