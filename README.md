@@ -17,6 +17,14 @@ To be updated
 
 [MIT](https://github.com/ramagururadhakrishnan/NamChain/blob/master/MIT)
 
-
-
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FNamChain-Open-Initiative-Research-Lab%2FDaaNamchain-PoC.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FNamChain-Open-Initiative-Research-Lab%2FDaaNamchain-PoC?ref=badge_large)
+
+# SDG 
+
+<p align="center">
+    <img src="https://github.com/ramagururadhakrishnan/UN-SDG/blob/main/Assets/G3.png" width="200"/>    
+    <img src="https://github.com/ramagururadhakrishnan/UN-SDG/blob/main/Assets/G9.png" width="200"/> 
+    <img src="https://github.com/ramagururadhakrishnan/UN-SDG/blob/main/Assets/G10.png" width="200"/> 
+    <img src="https://github.com/ramagururadhakrishnan/UN-SDG/blob/main/Assets/G16.png" width="200"/> 
+    <img src="https://github.com/ramagururadhakrishnan/UN-SDG/blob/main/Assets/G17.png" width="200"/> 
+</p>   
